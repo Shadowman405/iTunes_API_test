@@ -27,14 +27,15 @@ class SelectedViewController: UIViewController {
         trackLbl.text = selectedCell.trackName
         
         guard let url = URL(string: selectedCell.artworkUrl100) else { return }
-        
-        DispatchQueue.main.async { [weak self] in
-            if let imageData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imageData) {
-                    self?.artworkImg.image = loadedImage
-                }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let imageData = data else {return}
+            
+            DispatchQueue.main.async {
+                let loadedImg = UIImage(data: imageData)
+                self.artworkImg.image = loadedImg
             }
         }
+        .resume()
     }
 
 }
