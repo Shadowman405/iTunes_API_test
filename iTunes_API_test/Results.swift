@@ -134,6 +134,7 @@ struct Response: Decodable {
     struct Result: Decodable {
         var artistName: String = ""
         var trackName: String = ""
-        var artworkUrl60: String = ""
+        var artworkUrl100: String = ""
+        var description: String? = ""
     }
 }

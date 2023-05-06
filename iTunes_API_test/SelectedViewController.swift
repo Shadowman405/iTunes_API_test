@@ -13,6 +13,7 @@ class SelectedViewController: UIViewController {
     
     @IBOutlet weak var artistLbl: UILabel!
     @IBOutlet weak var trackLbl: UILabel!
+    @IBOutlet weak var artworkImg: UIImageView!
     
     
     override func viewDidLoad() {
@@ -24,6 +25,16 @@ class SelectedViewController: UIViewController {
     func configureView() {
         artistLbl.text = selectedCell.artistName
         trackLbl.text = selectedCell.trackName
+        
+        guard let url = URL(string: selectedCell.artworkUrl100) else { return }
+        
+        DispatchQueue.main.async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let loadedImage = UIImage(data: imageData) {
+                    self?.artworkImg.image = loadedImage
+                }
+            }
+        }
     }
 
 }
