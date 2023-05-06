@@ -13,6 +13,7 @@ class SelectedViewController: UIViewController {
     
     @IBOutlet weak var artistLbl: UILabel!
     @IBOutlet weak var trackLbl: UILabel!
+    @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var artworkImg: UIImageView!
     
     
@@ -25,6 +26,7 @@ class SelectedViewController: UIViewController {
     func configureView() {
         artistLbl.text = selectedCell.artistName
         trackLbl.text = selectedCell.trackName
+        descriptionLbl.text = selectedCell.description
         
         guard let url = URL(string: selectedCell.artworkUrl100) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
