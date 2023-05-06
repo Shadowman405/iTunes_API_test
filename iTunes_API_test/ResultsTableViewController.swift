@@ -10,6 +10,7 @@ import UIKit
 class ResultsTableViewController: UITableViewController {
     
     private var searchResults = [Welcome]()
+    private var resultsFinal = [Result]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +32,24 @@ class ResultsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if searchResults.count != 0 {
-            searchResults.count
+        if resultsFinal.count != 0 {
+            return resultsFinal.count
         } else {
             return 1
         }
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let result = resultsFinal[indexPath.row]
+        var config = cell.defaultContentConfiguration()
+        config.text = result.artistName
+        cell.contentConfiguration = config
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -100,21 +103,29 @@ extension ResultsTableViewController {
     func callAPI() {
         guard let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson.") else {return}
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            let decoder = JSONDecoder()
-            
-            if let data = data {
-                do {
-                    let results = try decoder.decode([Welcome].self, from: data)
-                    for result in results {
-                        self.searchResults.append(result)
+        DispatchQueue.main.async {
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                let decoder = JSONDecoder()
+                
+                if let data = data {
+                    do {
+                        let results = try decoder.decode([Welcome].self, from: data)
+                        for result in results {
+                            self.searchResults.append(result)
+                        }
+                        
+                        for i in self.searchResults {
+                            self.resultsFinal.append(contentsOf: i.results)
+                        }
+                    } catch {
+                        print(error)
                     }
-                } catch {
-                    print(error)
                 }
             }
+            task.resume()
+            
+            self.tableView.reloadData()
+
         }
-        task.resume()
-        
     }
 }
