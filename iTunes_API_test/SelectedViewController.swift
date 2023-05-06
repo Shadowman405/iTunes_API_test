@@ -18,11 +18,12 @@ class SelectedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureView()
     }
     
     func configureView() {
-        
+        artistLbl.text = selectedCell.artistName
+        trackLbl.text = selectedCell.trackName
     }
 
 }

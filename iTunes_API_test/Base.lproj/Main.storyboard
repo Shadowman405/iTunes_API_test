@@ -32,17 +32,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="AuF-Z7-Gxc"/>
+                    <connections>
+                        <segue destination="gUi-K5-ssm" kind="show" identifier="toDetails" id="9CV-Q0-T8q"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFH-je-NqR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="763" y="4"/>
+            <point key="canvasLocation" x="855" y="4"/>
         </scene>
         <!--Selected View Controller-->
         <scene sceneID="DiD-9q-wUf">
             <objects>
                 <viewController id="gUi-K5-ssm" customClass="SelectedViewController" customModule="iTunes_API_test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vwy-fb-idK">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOD-rl-NXw">
@@ -63,6 +66,7 @@
                         <viewLayoutGuide key="safeArea" id="WJe-M5-oKn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="zrx-YQ-hfF"/>
                     <connections>
                         <outlet property="artistLbl" destination="jOD-rl-NXw" id="Eti-MM-Rtu"/>
                         <outlet property="trackLbl" destination="G9L-7j-Nfh" id="NVV-zn-JTb"/>
