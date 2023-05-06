@@ -9,8 +9,7 @@ import UIKit
 
 class ResultsTableViewController: UITableViewController {
     
-    private var searchResults = [Welcome]()
-    private var resultsFinal = [Result]()
+    private var responseResults = [Response.Result]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,25 +26,22 @@ class ResultsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if resultsFinal.count != 0 {
-            return resultsFinal.count
-        } else {
-            return 1
-        }
+        return responseResults.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        let result = resultsFinal[indexPath.row]
-        var config = cell.defaultContentConfiguration()
-        config.text = result.artistName
-        cell.contentConfiguration = config
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let result = responseResults[indexPath.row]
+//        var config = cell.defaultContentConfiguration()
+//        config.text = result.artistName
+//        cell.contentConfiguration = config
+        cell.textLabel?.text = result.artistName
 
         return cell
     }
@@ -103,21 +99,17 @@ extension ResultsTableViewController {
     func callAPI() {
         guard let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson.") else {return}
         
-        DispatchQueue.main.async {
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 let decoder = JSONDecoder()
                 
                 if let data = data {
                     do {
-                        let results = try decoder.decode(Result.self, from: data)
-                        print(results)
-//                        for result in results {
-//                            self.resultsFinal.append(result)
-//                        }
-                        
-//                        for i in self.searchResults {
-//                            self.resultsFinal.append(contentsOf: i.results)
-//                        }
+                        let results = try decoder.decode(Response.self, from: data)
+                        //print(results)
+                        for result in results.results {
+                            self.responseResults.append(result)
+                            //print(result)
+                        }
                     } catch {
                         print(error)
                     }
@@ -125,8 +117,7 @@ extension ResultsTableViewController {
             }
             task.resume()
             
-            self.tableView.reloadData()
-
-        }
+        self.tableView.reloadData()
+        print(self.responseResults.count)
     }
 }
