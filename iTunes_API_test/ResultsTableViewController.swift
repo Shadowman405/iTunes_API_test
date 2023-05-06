@@ -38,10 +38,10 @@ class ResultsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let result = responseResults[indexPath.row]
-//        var config = cell.defaultContentConfiguration()
-//        config.text = result.artistName
-//        cell.contentConfiguration = config
-        cell.textLabel?.text = result.artistName
+        var config = cell.defaultContentConfiguration()
+        config.text = result.artistName
+        config.secondaryText = result.trackName
+        cell.contentConfiguration = config
 
         return cell
     }
@@ -109,6 +109,10 @@ extension ResultsTableViewController {
                         for result in results.results {
                             self.responseResults.append(result)
                             //print(result)
+                            
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
                         }
                     } catch {
                         print(error)
@@ -116,8 +120,5 @@ extension ResultsTableViewController {
                 }
             }
             task.resume()
-            
-        self.tableView.reloadData()
-        print(self.responseResults.count)
     }
 }
