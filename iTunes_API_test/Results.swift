@@ -132,7 +132,8 @@ struct Response: Decodable {
     let results: [Result]
  
     struct Result: Decodable {
-        let artistName: String
-        let trackName: String
+        var artistName: String = ""
+        var trackName: String = ""
+        var artworkUrl60: String = ""
     }
 }

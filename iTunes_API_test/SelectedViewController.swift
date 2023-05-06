@@ -9,7 +9,7 @@ import UIKit
 
 class SelectedViewController: UIViewController {
     
-    var selectedCell = Response.Result(artistName: "", trackName: "")
+    var selectedCell = Response.Result()
     
     @IBOutlet weak var artistLbl: UILabel!
     @IBOutlet weak var trackLbl: UILabel!
