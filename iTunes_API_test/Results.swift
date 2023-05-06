@@ -130,7 +130,7 @@ import Foundation
 struct Response: Decodable {
 
     let results: [Result]
-
+ 
     struct Result: Decodable {
         let artistName: String
         let trackName: String

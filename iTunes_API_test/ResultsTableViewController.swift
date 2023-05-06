@@ -10,7 +10,7 @@ import UIKit
 class ResultsTableViewController: UITableViewController {
     
     private var responseResults = [Response.Result]()
-
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
