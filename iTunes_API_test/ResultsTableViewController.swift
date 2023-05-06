@@ -109,14 +109,15 @@ extension ResultsTableViewController {
                 
                 if let data = data {
                     do {
-                        let results = try decoder.decode([Welcome].self, from: data)
-                        for result in results {
-                            self.searchResults.append(result)
-                        }
+                        let results = try decoder.decode(Result.self, from: data)
+                        print(results)
+//                        for result in results {
+//                            self.resultsFinal.append(result)
+//                        }
                         
-                        for i in self.searchResults {
-                            self.resultsFinal.append(contentsOf: i.results)
-                        }
+//                        for i in self.searchResults {
+//                            self.resultsFinal.append(contentsOf: i.results)
+//                        }
                     } catch {
                         print(error)
                     }

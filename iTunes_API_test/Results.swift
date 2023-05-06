@@ -11,10 +11,6 @@ class Welcome: Codable {
     let resultCount: Int
     let results: [Result]
 
-    init(resultCount: Int, results: [Result]) {
-        self.resultCount = resultCount
-        self.results = results
-    }
 }
 
 // MARK: - Result
