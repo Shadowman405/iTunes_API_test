@@ -14,6 +14,7 @@
 		BF420E552A05D0BE006DD00E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF420E542A05D0BE006DD00E /* Assets.xcassets */; };
 		BF420E582A05D0BE006DD00E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF420E562A05D0BE006DD00E /* LaunchScreen.storyboard */; };
 		BF420E602A05D411006DD00E /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF420E5F2A05D411006DD00E /* Results.swift */; };
+		BF420E622A05D48C006DD00E /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF420E612A05D48C006DD00E /* ResultsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		BF420E572A05D0BE006DD00E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF420E592A05D0BE006DD00E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF420E5F2A05D411006DD00E /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		BF420E612A05D48C006DD00E /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				BF420E562A05D0BE006DD00E /* LaunchScreen.storyboard */,
 				BF420E592A05D0BE006DD00E /* Info.plist */,
 				BF420E5F2A05D411006DD00E /* Results.swift */,
+				BF420E612A05D48C006DD00E /* ResultsTableViewController.swift */,
 			);
 			path = iTunes_API_test;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				BF420E4C2A05D0BD006DD00E /* AppDelegate.swift in Sources */,
 				BF420E602A05D411006DD00E /* Results.swift in Sources */,
 				BF420E4E2A05D0BD006DD00E /* SceneDelegate.swift in Sources */,
+				BF420E622A05D48C006DD00E /* ResultsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
