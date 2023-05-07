@@ -10,9 +10,9 @@ import Foundation
 class NetworkManager {
     static let shared = NetworkManager()
     
-    func callAPI(with completion: @escaping ([Response.Result]) -> ()){
+    func callAPI(url: String,with completion: @escaping ([Response.Result]) -> ()){
         var returnResults = [Response.Result]()
-        if let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson.") {
+        if let url = URL(string: url) {
             
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 let decoder = JSONDecoder()

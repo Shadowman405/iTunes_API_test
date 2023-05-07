@@ -11,12 +11,13 @@ class ResultsTableViewController: UITableViewController, UISearchBarDelegate {
     
     private var responseResults = [Response.Result]()
     private let networkManager = NetworkManager.shared
+    private var defaultURL = "https://itunes.apple.com/search?term=jack+johnson."
     let searchBar = UISearchBar()
  
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        networkManager.callAPI(with: { res in
+        networkManager.callAPI(url: "https://itunes.apple.com/search?term=jack+johnson.", with: { res in
             self.responseResults = res
             self.tableView.reloadData()
         })
@@ -81,5 +82,10 @@ extension ResultsTableViewController {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
+        
+        networkManager.callAPI(url: "https://itunes.apple.com/search?term=\(searchText)") { res in
+                self.responseResults = res
+                self.tableView.reloadData()
+        }
     }
 }
