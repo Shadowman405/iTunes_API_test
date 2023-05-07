@@ -7,10 +7,11 @@
 
 import UIKit
 
-class ResultsTableViewController: UITableViewController {
+class ResultsTableViewController: UITableViewController, UISearchBarDelegate {
     
     private var responseResults = [Response.Result]()
     private let networkManager = NetworkManager.shared
+    let searchBar = UISearchBar()
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,8 @@ class ResultsTableViewController: UITableViewController {
             self.responseResults = res
             self.tableView.reloadData()
         })
+        
+        configureSearchBar()
     }
 
     // MARK: - Table view data source
@@ -63,5 +66,20 @@ extension ResultsTableViewController {
             }
             
         }
+    }
+    
+    //SearchBar
+    func configureSearchBar() {
+        searchBar.searchBarStyle = .prominent
+        searchBar.placeholder = "Search...."
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+        tableView.addSubview(searchBar)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
 }
