@@ -10,16 +10,14 @@ import UIKit
 class ResultsTableViewController: UITableViewController {
     
     private var responseResults = [Response.Result]()
+    private let networkManager = NetworkManager.shared
  
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        callAPI()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        networkManager.callAPI(tableView: tableView, with: { res in
+            self.responseResults = res
+        })
     }
 
     // MARK: - Table view data source
@@ -56,35 +54,7 @@ class ResultsTableViewController: UITableViewController {
 
 
 extension ResultsTableViewController {
-    func callAPI() {
-        guard let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson.") else {return}
-        
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                let decoder = JSONDecoder()
-                
-                if let data = data {
-                    do {
-                        let results = try decoder.decode(Response.self, from: data)
-                        //print(results)
-                        for result in results.results {
-                            self.responseResults.append(result)
-                            //print(result)
-                            
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                            }
-                        }
-                    } catch {
-                        print(error)
-                    }
-                }
-            }
-            task.resume()
-    }
-    
-    
-    //Segues
-    
+    //Segues    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is SelectedViewController {
             if let vc = segue.destination as? SelectedViewController {
