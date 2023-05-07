@@ -21,6 +21,7 @@ class SelectedViewController: UIViewController {
         super.viewDidLoad()
 
         configureView()
+        artworkImg.makeRoundImg()
     }
     
     func configureView() {
@@ -40,4 +41,15 @@ class SelectedViewController: UIViewController {
         .resume()
     }
 
+}
+
+
+extension UIImageView {
+    func makeRoundImg() {
+        layer.borderWidth = 1
+        layer.masksToBounds = false
+        layer.borderColor = UIColor.magenta.cgColor
+        layer.cornerRadius = self.frame.height / 2
+        clipsToBounds = true
+    }
 }
