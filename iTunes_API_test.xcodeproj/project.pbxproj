@@ -62,18 +62,42 @@
 		BF420E4A2A05D0BD006DD00E /* iTunes_API_test */ = {
 			isa = PBXGroup;
 			children = (
+				BF420E692A07D0E1006DD00E /* Model */,
+				BF420E682A07D0C2006DD00E /* Controller */,
+				BF420E672A07D0B0006DD00E /* Support Files */,
 				BF420E4B2A05D0BD006DD00E /* AppDelegate.swift */,
 				BF420E4D2A05D0BD006DD00E /* SceneDelegate.swift */,
 				BF420E512A05D0BD006DD00E /* Main.storyboard */,
 				BF420E542A05D0BE006DD00E /* Assets.xcassets */,
 				BF420E562A05D0BE006DD00E /* LaunchScreen.storyboard */,
 				BF420E592A05D0BE006DD00E /* Info.plist */,
-				BF420E5F2A05D411006DD00E /* Results.swift */,
-				BF420E612A05D48C006DD00E /* ResultsTableViewController.swift */,
-				BF420E632A06AC04006DD00E /* SelectedViewController.swift */,
-				BF420E652A07C819006DD00E /* NetworkManager.swift */,
 			);
 			path = iTunes_API_test;
+			sourceTree = "<group>";
+		};
+		BF420E672A07D0B0006DD00E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF420E652A07C819006DD00E /* NetworkManager.swift */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		BF420E682A07D0C2006DD00E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF420E612A05D48C006DD00E /* ResultsTableViewController.swift */,
+				BF420E632A06AC04006DD00E /* SelectedViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF420E692A07D0E1006DD00E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF420E5F2A05D411006DD00E /* Results.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
