@@ -26,7 +26,7 @@ class SelectedViewController: UIViewController {
     func configureView() {
         artistLbl.text = selectedCell.artistName
         trackLbl.text = selectedCell.trackName
-        descriptionLbl.text = selectedCell.description
+        descriptionLbl.text = selectedCell.longDescription
         
         guard let url = URL(string: selectedCell.artworkUrl100) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in

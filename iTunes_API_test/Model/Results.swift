@@ -135,6 +135,6 @@ struct Response: Decodable {
         var artistName: String = ""
         var trackName: String = ""
         var artworkUrl100: String = ""
-        var description: String? = ""
+        var longDescription: String? = ""
     }
 }
