@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import UIKit
 
 class NetworkManager {
     static let shared = NetworkManager()
     
-    func callAPI(tableView: UITableView,with completion: @escaping ([Response.Result]) -> ()){
+    func callAPI(with completion: @escaping ([Response.Result]) -> ()){
         var returnResults = [Response.Result]()
         if let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson.") {
             
@@ -27,7 +26,6 @@ class NetworkManager {
                             //print(result)
                             
                             DispatchQueue.main.async {
-                                tableView.reloadData()
                                 completion(returnResults)
                             }
                         }

@@ -15,8 +15,9 @@ class ResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        networkManager.callAPI(tableView: tableView, with: { res in
+        networkManager.callAPI(with: { res in
             self.responseResults = res
+            self.tableView.reloadData()
         })
     }
 
